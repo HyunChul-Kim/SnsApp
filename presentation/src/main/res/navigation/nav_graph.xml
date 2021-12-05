@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.chul.presentation.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.chul.presentation.signin.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/fragment_sign_in"/>
+    <fragment
+        android:id="@+id/homeTabFragment"
+        android:name="com.chul.presentation.home.hometab.HomeTabFragment"
+        android:label="HomeTabFragment"
+        tools:layout="@layout/fragment_home_tab">
+        <action
+            android:id="@+id/action_homeTabFragment_to_photoDetailFragment"
+            app:destination="@id/photoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoTabFragment"
+        android:name="com.chul.presentation.home.phototab.PhotoTabFragment"
+        android:label="PhotoTabFragment"
+        tools:layout="@layout/fragment_photo_tab">
+        <action
+            android:id="@+id/action_photoTabFragment_to_photoDetailFragment"
+            app:destination="@id/photoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDetailFragment"
+        android:name="com.chul.presentation.home.PhotoDetailFragment"
+        android:label="PhotoDetailFragment"
+        tools:layout="@layout/fragment_photo_detail"/>
+    <action android:id="@+id/action_global_signInFragment"
+        app:destination="@id/signInFragment" />
+</navigation>

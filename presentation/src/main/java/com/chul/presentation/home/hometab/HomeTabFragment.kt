@@ -21,9 +21,8 @@ class HomeTabFragment: Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var homeTabBinding: FragmentHomeTabBinding
     private val homeTabViewModel: HomeTabViewModel by viewModels { viewModelFactory }
-    private val homeViewModel: HomeViewModel by viewModels({requireParentFragment()}, {viewModelFactory})
 
-    private val cardAdapter = CardAdapter()
+    private val cardAdapter = CardAdapter(CardParentType.HOME)
     private val userAdapter = UserAdapter()
 
     override fun onAttach(context: Context) {

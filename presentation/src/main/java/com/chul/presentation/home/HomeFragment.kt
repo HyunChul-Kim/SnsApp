@@ -20,7 +20,6 @@ class HomeFragment: Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val homeViewModel by viewModels<HomeViewModel> { viewModelFactory }
     lateinit var homeComponent: HomeComponent
     private lateinit var homeBinding: FragmentHomeBinding
     private lateinit var adapter: HomeTabAdapter
@@ -29,6 +28,10 @@ class HomeFragment: Fragment() {
         super.onAttach(context)
         homeComponent = (activity as MainActivity).mainComponent.homeComponent().create()
         homeComponent.inject(this)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(

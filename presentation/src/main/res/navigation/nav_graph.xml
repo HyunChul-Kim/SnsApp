@@ -9,35 +9,30 @@
         android:id="@+id/homeFragment"
         android:name="com.chul.presentation.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_photoDetailFragment"
+            app:destination="@id/photoDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.chul.presentation.signin.SignInFragment"
         android:label="SignInFragment"
         tools:layout="@layout/fragment_sign_in"/>
     <fragment
-        android:id="@+id/homeTabFragment"
-        android:name="com.chul.presentation.home.hometab.HomeTabFragment"
-        android:label="HomeTabFragment"
-        tools:layout="@layout/fragment_home_tab">
-        <action
-            android:id="@+id/action_homeTabFragment_to_photoDetailFragment"
-            app:destination="@id/photoDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/photoTabFragment"
-        android:name="com.chul.presentation.home.phototab.PhotoTabFragment"
-        android:label="PhotoTabFragment"
-        tools:layout="@layout/fragment_photo_tab">
-        <action
-            android:id="@+id/action_photoTabFragment_to_photoDetailFragment"
-            app:destination="@id/photoDetailFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/photoDetailFragment"
-        android:name="com.chul.presentation.home.PhotoDetailFragment"
+        android:name="com.chul.presentation.photodetail.PhotoDetailFragment"
         android:label="PhotoDetailFragment"
-        tools:layout="@layout/fragment_photo_detail"/>
+        tools:layout="@layout/fragment_photo_detail">
+        <argument
+            android:name="cardId"
+            app:argType="integer"/>
+        <action
+            android:id="@+id/action_photoDetailFragment_self"
+            app:destination="@id/photoDetailFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
     <action android:id="@+id/action_global_signInFragment"
-        app:destination="@id/signInFragment" />
+        app:destination="@id/signInFragment"
+        app:launchSingleTop="true" />
 </navigation>

@@ -6,8 +6,8 @@ import com.chul.data.model.CardDetailResponse
 import com.chul.data.model.CardResponse
 
 class CardDataSourceImpl(private val api: CardService): CardDataSource {
-    override suspend fun getPhotoFeed(): CardResponse {
-        return api.getFeed()
+    override suspend fun getPhotoFeed(id: Int, per: Int): CardResponse {
+        return api.getFeed(id, per)
     }
 
     override suspend fun getPhotoDetail(id: Int): CardDetailResponse {

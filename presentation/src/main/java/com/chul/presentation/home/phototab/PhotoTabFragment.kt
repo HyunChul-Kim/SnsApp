@@ -8,9 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.chul.presentation.databinding.FragmentPhotoTabBinding
 import com.chul.presentation.home.HomeFragment
 import com.chul.presentation.home.HomeViewModel
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class PhotoTabFragment: Fragment() {
@@ -19,7 +22,6 @@ class PhotoTabFragment: Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var photoTabBinding: FragmentPhotoTabBinding
     private val photoTabViewModel: PhotoTabViewModel by viewModels { viewModelFactory }
-    private val homeViewModel: HomeViewModel by viewModels( {requireParentFragment()}, {viewModelFactory})
     private val feedAdapter = PhotoFeedAdapter()
 
     override fun onAttach(context: Context) {
@@ -40,7 +42,7 @@ class PhotoTabFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupListView()
         setupViewModel()
-        photoTabViewModel.requestPhotoFeed()
+        //photoTabViewModel.requestPhotoFeed()
     }
 
     private fun setupListView() {
@@ -48,8 +50,10 @@ class PhotoTabFragment: Fragment() {
     }
 
     private fun setupViewModel() {
-        photoTabViewModel.photoList.observe(viewLifecycleOwner) { list ->
-            feedAdapter.submitList(list)
+        viewLifecycleOwner.lifecycleScope.launch {
+            photoTabViewModel.cardList.collectLatest { list ->
+                feedAdapter.submitData(list)
+            }
         }
     }
 }

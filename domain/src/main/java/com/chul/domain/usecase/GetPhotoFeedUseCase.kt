@@ -7,6 +7,6 @@ class GetPhotoFeedUseCase(
     private val repository: CardRepository
 ) {
     suspend fun invoke(): PhotoFeed {
-        return repository.getPhotoFeed()
+        return repository.getPhotoFeed(1, 20)
     }
 }

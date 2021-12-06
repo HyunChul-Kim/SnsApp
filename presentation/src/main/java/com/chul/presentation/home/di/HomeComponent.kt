@@ -21,7 +21,7 @@ interface HomeComponent {
         fun create(): HomeComponent
     }
 
-    fun inject(homeFragment: HomeFragment)
+    fun inject(fragment: HomeFragment)
 
     fun homeTabComponent(): HomeTabComponent.Factory
     fun photoTabComponent(): PhotoTabComponent.Factory

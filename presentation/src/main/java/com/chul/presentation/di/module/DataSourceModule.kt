@@ -4,6 +4,7 @@ import com.chul.data.api.CardService
 import com.chul.data.api.HomeService
 import com.chul.data.source.card.CardDataSource
 import com.chul.data.source.card.CardDataSourceImpl
+import com.chul.data.source.card.CardPagingSource
 import com.chul.data.source.home.HomeDataSource
 import com.chul.data.source.home.HomeDataSourceImpl
 import dagger.Module
@@ -22,5 +23,10 @@ class DataSourceModule {
     @Provides
     fun provideCardDataSource(api: CardService): CardDataSource {
         return CardDataSourceImpl(api)
+    }
+
+    @Provides
+    fun provideFeedPagingSource(api: CardService): CardPagingSource {
+        return CardPagingSource(api)
     }
 }

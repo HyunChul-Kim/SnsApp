@@ -5,7 +5,7 @@ import com.chul.data.model.CardResponse
 
 interface CardDataSource {
 
-    suspend fun getPhotoFeed(): CardResponse
+    suspend fun getPhotoFeed(id: Int, per: Int): CardResponse
 
     suspend fun getPhotoDetail(id: Int): CardDetailResponse
 }

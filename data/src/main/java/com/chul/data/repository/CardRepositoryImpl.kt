@@ -9,8 +9,8 @@ import com.chul.domain.repository.CardRepository
 class CardRepositoryImpl(
     private val cardDataSource: CardDataSource
 ): CardRepository {
-    override suspend fun getPhotoFeed(): PhotoFeed {
-        return cardDataSource.getPhotoFeed().toDomain()
+    override suspend fun getPhotoFeed(id: Int, per: Int): PhotoFeed {
+        return cardDataSource.getPhotoFeed(id, per).toDomain()
     }
 
     override suspend fun getPhotoDetail(id: Int): PhotoDetail {

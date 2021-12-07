@@ -18,7 +18,6 @@
         android:id="@+id/home_tab_card_list_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:nestedScrollingEnabled="true"
         android:orientation="horizontal"
         app:layout_constraintHeight_percent="0.16"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

@@ -7,14 +7,17 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.chul.presentation.home.hometab.HomeTabFragment
 import com.chul.presentation.home.phototab.PhotoTabFragment
 
-class HomeTabAdapter(parentFragment: FragmentManager, lifecycle: Lifecycle): FragmentStateAdapter(parentFragment, lifecycle) {
-    override fun getItemCount(): Int = 2
+class HomeTabAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
+
+    private val tabFragments = listOf(
+        HomeTabFragment(),
+        PhotoTabFragment()
+    )
+
+    override fun getItemCount(): Int = tabFragments.size
 
     override fun createFragment(position: Int): Fragment {
-        return when(position) {
-            0 -> HomeTabFragment()
-            else -> PhotoTabFragment()
-        }
+        return tabFragments[position]
     }
 
     fun getTitle(position: Int): String {

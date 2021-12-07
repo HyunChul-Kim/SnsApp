@@ -1,5 +1,6 @@
 package com.chul.presentation.di.module
 
+import com.chul.data.api.CardService
 import com.chul.data.repository.CardPagingRepository
 import com.chul.data.repository.CardRepositoryImpl
 import com.chul.data.repository.HomeRepositoryImpl
@@ -31,8 +32,8 @@ class RepositoryModule {
     }
 
     @Provides
-    fun provideCardPagingRepository(dataSource: CardPagingSource): CardPagingRepository {
-        return CardPagingRepository(dataSource)
+    fun provideCardPagingRepository(api: CardService): CardPagingRepository {
+        return CardPagingRepository(api)
     }
 
     @Provides

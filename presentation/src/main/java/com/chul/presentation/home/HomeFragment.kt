@@ -6,11 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.chul.presentation.databinding.FragmentHomeBinding
 import com.chul.presentation.home.di.HomeComponent
-import com.chul.presentation.home.hometab.HomeTabViewModel
 import com.chul.presentation.main.MainActivity
 import com.google.android.material.tabs.TabLayoutMediator
 import javax.inject.Inject
@@ -47,7 +45,7 @@ class HomeFragment: Fragment() {
     private fun setupViewPager() {
         val tabLayout = homeBinding.homeTabLayout
         val viewPager = homeBinding.homeViewPager
-        adapter = HomeTabAdapter(childFragmentManager, lifecycle)
+        adapter = HomeTabAdapter(this)
         viewPager.adapter = adapter
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = adapter.getTitle(position)

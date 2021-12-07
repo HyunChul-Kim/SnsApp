@@ -3,15 +3,18 @@ package com.chul.presentation.home.hometab
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.chul.presentation.databinding.FragmentHomeTabBinding
 import com.chul.presentation.home.HomeFragment
 import com.chul.presentation.home.HomeViewModel
 import com.chul.presentation.home.phototab.UserAdapter
+import com.chul.presentation.utils.HorizontalItemTouchListener
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -49,6 +52,8 @@ class HomeTabFragment: Fragment() {
     private fun setupListView() {
         homeTabBinding.homeTabCardListView.adapter = cardAdapter
         homeTabBinding.homeTabUserListView.adapter = userAdapter
+        homeTabBinding.homeTabCardListView.addOnItemTouchListener(HorizontalItemTouchListener())
+        homeTabBinding.homeTabUserListView.addOnItemTouchListener(HorizontalItemTouchListener())
     }
 
     private fun setupViewModel() {

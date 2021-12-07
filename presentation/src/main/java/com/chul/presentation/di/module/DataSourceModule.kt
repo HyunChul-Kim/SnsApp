@@ -32,11 +32,6 @@ class DataSourceModule {
     }
 
     @Provides
-    fun provideFeedPagingSource(api: CardService): CardPagingSource {
-        return CardPagingSource(api)
-    }
-
-    @Provides
     fun provideLoginDataSource(api: LoginService): LoginDataSource {
         return LoginDataSourceImpl(api)
     }

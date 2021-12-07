@@ -4,8 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
+import androidx.paging.*
 import com.chul.data.repository.CardPagingRepository
+import com.chul.data.source.remote.card.CardPagingSource
 import com.chul.domain.model.Card
 import com.chul.domain.usecase.GetPhotoFeedUseCase
 import kotlinx.coroutines.flow.Flow
@@ -16,14 +17,5 @@ class PhotoTabViewModel @Inject constructor(
     private val cardPagingRepository: CardPagingRepository
 ): ViewModel() {
 
-    val cardList: Flow<PagingData<Card>> get() = cardPagingRepository.getCards()
-    /*private val _photoList = MutableLiveData<List<Card>>()
-    val photoList: LiveData<List<Card>> get() = _photoList
-
-    fun requestPhotoFeed() {
-        viewModelScope.launch {
-            val response = getPhotoFeedUseCase.invoke()
-            _photoList.value = response.cards
-        }
-    }*/
+    val cardList: LiveData<PagingData<Card>> get() = cardPagingRepository.getCards().cachedIn(viewModelScope)
 }

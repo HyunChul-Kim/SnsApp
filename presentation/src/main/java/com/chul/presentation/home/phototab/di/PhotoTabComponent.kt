@@ -1,10 +1,17 @@
 package com.chul.presentation.home.phototab.di
 
-import com.chul.presentation.di.scope.FragmentScope
+import com.chul.data.api.CardService
+import com.chul.data.repository.CardPagingRepository
+import com.chul.presentation.di.scope.SubFragmentScope
 import com.chul.presentation.home.phototab.PhotoTabFragment
+import dagger.Module
+import dagger.Provides
 import dagger.Subcomponent
 
-@Subcomponent(modules = [PhotoTabModule::class])
+@SubFragmentScope
+@Subcomponent(modules = [
+    PhotoTabModule::class
+])
 interface PhotoTabComponent {
 
     @Subcomponent.Factory

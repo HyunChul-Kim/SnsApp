@@ -2,11 +2,17 @@ package com.chul.presentation.di.module
 
 import com.chul.data.api.CardService
 import com.chul.data.api.HomeService
-import com.chul.data.source.card.CardDataSource
-import com.chul.data.source.card.CardDataSourceImpl
-import com.chul.data.source.card.CardPagingSource
-import com.chul.data.source.home.HomeDataSource
-import com.chul.data.source.home.HomeDataSourceImpl
+import com.chul.data.api.LoginService
+import com.chul.data.db.UserDao
+import com.chul.data.source.local.UserDataSource
+import com.chul.data.source.local.UserDataSourceImpl
+import com.chul.data.source.remote.LoginDataSource
+import com.chul.data.source.remote.LoginDataSourceImpl
+import com.chul.data.source.remote.card.CardDataSource
+import com.chul.data.source.remote.card.CardDataSourceImpl
+import com.chul.data.source.remote.card.CardPagingSource
+import com.chul.data.source.remote.home.HomeDataSource
+import com.chul.data.source.remote.home.HomeDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -28,5 +34,15 @@ class DataSourceModule {
     @Provides
     fun provideFeedPagingSource(api: CardService): CardPagingSource {
         return CardPagingSource(api)
+    }
+
+    @Provides
+    fun provideLoginDataSource(api: LoginService): LoginDataSource {
+        return LoginDataSourceImpl(api)
+    }
+
+    @Provides
+    fun provideUserDataSource(userDao: UserDao): UserDataSource {
+        return UserDataSourceImpl(userDao)
     }
 }

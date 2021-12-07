@@ -69,7 +69,12 @@ dependencies {
     annotationProcessor "com.github.bumptech.glide:compiler:${versions.glide}"
 
     // paging3
-    implementation "androidx.paging:paging-runtime-ktx:3.0.1"
+    implementation "androidx.paging:paging-runtime-ktx:3.1.0"
+
+    // room
+    implementation("androidx.room:room-runtime:${versions.room}")
+    implementation "androidx.room:room-ktx:${versions.room}"
+    kapt("androidx.room:room-compiler:${versions.room}")
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

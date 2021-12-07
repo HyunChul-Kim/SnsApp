@@ -14,7 +14,8 @@ import javax.inject.Singleton
     RepositoryModule::class,
     UseCaseModule::class,
     DataSourceModule::class,
-    SubComponentModule::class
+    SubComponentModule::class,
+    DatabaseModule::class
 ])
 interface AppComponent {
     @Component.Factory

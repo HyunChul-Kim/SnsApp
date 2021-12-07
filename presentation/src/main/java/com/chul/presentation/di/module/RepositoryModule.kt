@@ -3,11 +3,15 @@ package com.chul.presentation.di.module
 import com.chul.data.repository.CardPagingRepository
 import com.chul.data.repository.CardRepositoryImpl
 import com.chul.data.repository.HomeRepositoryImpl
-import com.chul.data.source.card.CardDataSource
-import com.chul.data.source.card.CardPagingSource
-import com.chul.data.source.home.HomeDataSource
+import com.chul.data.repository.SignInRepositoryImpl
+import com.chul.data.source.local.UserDataSource
+import com.chul.data.source.remote.LoginDataSource
+import com.chul.data.source.remote.card.CardDataSource
+import com.chul.data.source.remote.card.CardPagingSource
+import com.chul.data.source.remote.home.HomeDataSource
 import com.chul.domain.repository.CardRepository
 import com.chul.domain.repository.HomeRepository
+import com.chul.domain.repository.SignInRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -27,7 +31,12 @@ class RepositoryModule {
     }
 
     @Provides
-    fun provideCardPagingRepository(cardPagingSource: CardPagingSource): CardPagingRepository {
-        return CardPagingRepository(cardPagingSource)
+    fun provideCardPagingRepository(dataSource: CardPagingSource): CardPagingRepository {
+        return CardPagingRepository(dataSource)
+    }
+
+    @Provides
+    fun provideLoginRepository(dataSource: LoginDataSource, userDataSource: UserDataSource): SignInRepository {
+        return SignInRepositoryImpl(dataSource, userDataSource)
     }
 }

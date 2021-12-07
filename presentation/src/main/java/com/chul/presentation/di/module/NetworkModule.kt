@@ -3,6 +3,7 @@ package com.chul.presentation.di.module
 import com.chul.data.api.CardService
 import com.chul.data.api.RetrofitClient
 import com.chul.data.api.HomeService
+import com.chul.data.api.LoginService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -26,5 +27,11 @@ class NetworkModule {
     @Provides
     fun provideCardService(retrofit: Retrofit): CardService {
         return retrofit.create(CardService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideLoginService(retrofit: Retrofit): LoginService {
+        return retrofit.create(LoginService::class.java)
     }
 }

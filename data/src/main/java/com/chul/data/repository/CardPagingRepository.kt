@@ -4,7 +4,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.chul.data.api.CardService
-import com.chul.data.source.card.CardPagingSource
+import com.chul.data.source.remote.card.CardPagingSource
 import com.chul.domain.model.Card
 import kotlinx.coroutines.flow.Flow
 

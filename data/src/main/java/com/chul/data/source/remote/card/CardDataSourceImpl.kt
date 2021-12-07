@@ -1,9 +1,8 @@
-package com.chul.data.source.card
+package com.chul.data.source.remote.card
 
 import com.chul.data.api.CardService
-import com.chul.data.api.HomeService
-import com.chul.data.model.CardDetailResponse
-import com.chul.data.model.CardResponse
+import com.chul.data.model.remote.CardDetailResponse
+import com.chul.data.model.remote.CardResponse
 
 class CardDataSourceImpl(private val api: CardService): CardDataSource {
     override suspend fun getPhotoFeed(id: Int, per: Int): CardResponse {

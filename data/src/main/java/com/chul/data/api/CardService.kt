@@ -1,7 +1,7 @@
 package com.chul.data.api
 
-import com.chul.data.model.CardDetailResponse
-import com.chul.data.model.CardResponse
+import com.chul.data.model.remote.CardDetailResponse
+import com.chul.data.model.remote.CardResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

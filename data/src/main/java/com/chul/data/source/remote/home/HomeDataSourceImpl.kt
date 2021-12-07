@@ -1,7 +1,7 @@
-package com.chul.data.source.home
+package com.chul.data.source.remote.home
 
 import com.chul.data.api.HomeService
-import com.chul.data.model.HomeResponse
+import com.chul.data.model.remote.HomeResponse
 
 class HomeDataSourceImpl(private val api: HomeService): HomeDataSource {
 

@@ -1,7 +1,7 @@
-package com.chul.data.source.card
+package com.chul.data.source.remote.card
 
-import com.chul.data.model.CardDetailResponse
-import com.chul.data.model.CardResponse
+import com.chul.data.model.remote.CardDetailResponse
+import com.chul.data.model.remote.CardResponse
 
 interface CardDataSource {
 

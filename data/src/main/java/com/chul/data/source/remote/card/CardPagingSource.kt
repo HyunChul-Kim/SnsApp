@@ -1,9 +1,9 @@
-package com.chul.data.source.card
+package com.chul.data.source.remote.card
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.chul.data.api.CardService
-import com.chul.data.model.toDomain
+import com.chul.data.model.remote.toDomain
 import com.chul.domain.model.Card
 
 class CardPagingSource constructor(

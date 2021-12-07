@@ -1,4 +1,4 @@
-package com.chul.data.model
+package com.chul.data.model.remote
 
 import com.chul.domain.model.Card
 import com.google.gson.annotations.SerializedName

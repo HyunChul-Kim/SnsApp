@@ -38,14 +38,12 @@ class PhotoTabFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        photoTabBinding = FragmentPhotoTabBinding.inflate(inflater, container, false)
-        setupUI()
+        if(!this::photoTabBinding.isInitialized) {
+            photoTabBinding = FragmentPhotoTabBinding.inflate(inflater, container, false)
+            setupUI()
+            setupViewModel()
+        }
         return photoTabBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupViewModel()
     }
 
     private fun setupUI() {

@@ -10,7 +10,7 @@ class CardPagingSource constructor(
     private val api: CardService
 ): PagingSource<Int, Card>() {
     override fun getRefreshKey(state: PagingState<Int, Card>): Int? {
-        return null
+        return 1
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Card> {
@@ -22,7 +22,7 @@ class CardPagingSource constructor(
                 LoadResult.Page(
                     data = cards,
                     prevKey = if(next == 1) null else next - 1,
-                    nextKey = next + 1
+                    nextKey = if(cards.isNullOrEmpty()) null else next + 1
                 )
             } else {
                 LoadResult.Error(Exception(""))
